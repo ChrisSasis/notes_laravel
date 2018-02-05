@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {   
 
-        $notes = Note::all();
+        $notes = Note::all()->sortByDesc('created_at');
         $activeuser = Auth::user();
         $tags = Tag::all();
 

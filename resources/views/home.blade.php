@@ -1,10 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="alert-delete" id="alert-delete">
-        Delete anyway?
-    </div>
+    
     <div class="c-wrap-list">
+        <div class="c-cta">
+            <h2 class="o-title">Label</h2>
+            <a href="{{ url ('/') }}/tags" class="o-btn--primary o-btn--circle o-btn--s o-btn--i-s">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+        <div class="c-wrap--label">
+            @foreach ($tags as $tag)
+                @if($activeuser->id == $tag->user_id)
+                    <div class="o-label--default o-btn--circle o-label--m" style="margin-top:5px;">{{ $tag->tag }}</div>
+                @endif
+            @endforeach
+        </div>
 
         <div class="c-cta">
             <h2 class="o-title">All Notes</h2>
@@ -19,7 +30,7 @@
                 <div class="c-note-wrap c-note-grid c-column-half">
                     
                     <form action="{{action('NotesController@destroy', $note['id'])}}" method="post">
-                        {{csrf_field()}} -->
+                        {{csrf_field()}} 
 
                         <input type="hidden" name="_method" value="DELETE">
                          <button class="o-btn--warning o-btn--circle o-btn--xs o-btn--i-xs c-position-right" id="delete-alert" style="color:white">
@@ -42,15 +53,6 @@
                 </div>
                 @endif
             @endforeach
-            
-            <ul>
-                @foreach ($tags as $tag)
-                
-                    @if($activeuser->id == $tag->user_id)
-                    <li>{{ $tag->tag }}</li>    
-                    @endif
-                @endforeach
-            </ul>
         </div>
 
     </div>

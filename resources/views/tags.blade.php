@@ -4,7 +4,7 @@
 
         <form action="{{ url('/')}}/tags" method="POST">
             {{ csrf_field() }}
-            {{ isset($notes) ? method_field('PUT') : '' }}
+            {{ isset($tags) ? method_field('PUT') : '' }}
         
         <input type="hidden" readonly name="user_id" value="{{Auth::user()->id}}">
         
@@ -15,8 +15,18 @@
         
         <div class="c-wrapper-cat">
             <button class="o-btn--primary o-btn--circle">DONE</button>  
-            <p style="font-size:12px">{{isset($notes) ? 'Edited: ' . date('M d,Y', strtotime($notes->updated_at)) : ''}}</p>
+            <p style="font-size:12px">{{isset($tags) ? 'Edited: ' . date('M d,Y', strtotime($tags->updated_at)) : ''}}</p>
         </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         
     </form>
 

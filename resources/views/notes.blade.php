@@ -36,7 +36,14 @@
                 <button class="o-btn--primary o-btn--circle">DONE</button>  
                 <p style="font-size:12px">{{isset($notes) ? 'Edited: ' . date('M d,Y', strtotime($notes->updated_at)) : ''}}</p>
             </div>
-            
+
+             @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }} <br/>
+                    @endforeach
+                </div>
+            @endif
         </form>
 
 @endsection

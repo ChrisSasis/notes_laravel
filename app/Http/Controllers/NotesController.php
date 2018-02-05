@@ -32,6 +32,12 @@ class NotesController extends Controller
     public function store(Request $request) {
         $notes = new Note;
 
+        $validateData = $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'tag_id' => 'required',
+        ]);
+
         $notes = $request->only(['user_id', 'title', 'description', 'tag_id']);
         
         Note::create($notes);

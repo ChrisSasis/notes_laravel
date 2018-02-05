@@ -37,13 +37,13 @@
             @else
                 <header class="c-wrap--center" style="position:relative">
                     <div class="c-avatar o-imgwrap c-avatar--xxs" style="display: inline-block;vertical-align: middle">
-                        <a href="{{ url('/') }}/home">
+                        <a href="{{ url('/') }}/home" title="Home">
                             <!-- <img src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg" alt=""> -->
                             <i class="material-icons" style="font-size:30px">account_circle</i>
                         </a>
                     </div>
                     <div style="display: inline-block;vertical-align: middle;padding-left:5px;font-size:12px;font-weight:700">
-                        {{ '@'.Auth::user()->username}}
+                        <a href="{{ url('/') }}/profile" title="Profile">{{ '@'.Auth::user()->username}}</a>
                     </div>
                     <div class="c-position-right">
                         <a href="{{ route('logout') }}"
@@ -81,15 +81,6 @@
         //   },0);
         // }
 
-
-        // delete alert
-        var create = document.getElementById('delete-alert');
-        create.addEventListener('click',function() {
-
-            var modal = document.getElementById('alert-modal');
-            modal.color = "red";
-
-        })
     </script>
 </body>
 </html>

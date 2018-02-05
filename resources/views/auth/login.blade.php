@@ -9,11 +9,11 @@
             {{ csrf_field() }}
             
             <div class="o-input">
-                <input id="email" type="email" class="o-input--nostyle o-input--borderbottom" name="email" value="{{ old('email') }}" required autofocus placeholder="Email Address">
+                <input id="email" type="text" class="o-input--nostyle o-input--borderbottom" name="username" value="{{ old('username') }}" required autofocus placeholder="Username">
 
-                @if ($errors->has('email'))
+                @if ($errors->has('username'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('username') }}</strong>
                     </span>
                 @endif
             </div>

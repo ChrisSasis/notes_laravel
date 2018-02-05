@@ -28,6 +28,11 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/tags', 'TagsController@create');
 	Route::post('/tags', 'TagsController@store');
 
+	// Profile
+	Route::get('/profile', 'UserController@index');
+	Route::get('/settings/update/{id}', 'UserController@edit');
+	Route::put('/settings/{id}', 'UserController@update');
+
 	// admin
 	Route::get('/4dM1N', 'AdminController@index');
 });
